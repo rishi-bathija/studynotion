@@ -1,0 +1,35 @@
+.ReactTags__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.ReactTags__tag {
+    background-color: #2d2d2d;
+    color: white;
+    border-radius: 3px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.ReactTags__tag a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ReactTags__tagInput {
+    display: flex;
+    flex: 1;
+}
+
+.ReactTags__tagInput input {
+    border: none;
+    outline: none;
+    padding: 5px;
+    background-color: #2d2d2d;
+    color: white;
+    border-radius: 3px;
+}
