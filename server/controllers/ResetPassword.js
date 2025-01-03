@@ -23,7 +23,7 @@ exports.resetPasswordToken = async (req, res) => {
         const updatedDetails = await User.findOneAndUpdate({ email }, { token: token, tokenExpire: Date.now() + 5 * 60 * 1000 }, { new: true });
 
         // create url for the password updation
-        const url = `http://localhost:3000/update-password/${token}`;
+        const url = `https://studynotion-frontend-blond.vercel.app/update-password/${token}`;
 
         // sened mail containing the url
         await mailSender(email, "Password reset link", `Password reset link: ${url}`);
