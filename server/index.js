@@ -19,7 +19,7 @@ const port = process.env.PORT || 4001;
 dbConnect();
 cloudinaryConnect();
 
-app.use(express.json());
+app.use(express.json({ limit: '50mb' }));
 app.use(cookieParser());
 
 app.use(
@@ -29,7 +29,7 @@ app.use(
     })
 );
 
-app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp" }));
+app.use(fileUpload({ useTempFiles: true, tempFileDir: "/tmp", limits: { fileSize: 50 * 1024 * 1024 } }));
 
 // routes
 app.use("/api/v1/auth", userRoutes);
