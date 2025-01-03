@@ -66,7 +66,6 @@ const ChangePassword = () => {
                         {errors.newPassword && <span>{errors.newPassword.message}</span>}
                     </div>
                 </div>
-            </form>
             <div className="flex justify-end gap-2">
                 <button
                     onClick={() => {
@@ -78,6 +77,7 @@ const ChangePassword = () => {
                 </button>
                 <IconBtn type="submit" text="Update" />
             </div>
+            </form>
         </div>
     )
 }
