@@ -36,7 +36,7 @@ export const resetPassword = (password, confirmPassword, token) => {
         dispatch(setLoading(true));
 
         try {
-            const response = await apiConnector("POST", settingsEndPoints.CHANGE_PASSWORD_API, { password, confirmPassword, token });
+            const response = await apiConnector("POST", authEndPoints.RESETPASSWORD_API, { password, confirmPassword, token });
             console.log("reset password response", response);
 
             if (!response.data.success) {
