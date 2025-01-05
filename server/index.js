@@ -19,9 +19,14 @@ const port = process.env.PORT || 4001;
 dbConnect();
 cloudinaryConnect();
 
-app.use(express.json({ limit: '50mb' }));
-app.use(cookieParser());
+// // app.use(express.json({ limit: '50mb' }));
+// console.log(app.use(express.urlencoded({ limit: '50mb', extended: true })));
 
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true, parameterLimit: 100000 }));
+
+app.use(cookieParser());
+console.log("i am here")
 app.use(
     cors({
         origin: ["http://localhost:3000", "https://studynotion-frontend-blond.vercel.app"],
