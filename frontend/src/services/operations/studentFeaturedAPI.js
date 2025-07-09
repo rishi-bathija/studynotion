@@ -44,7 +44,7 @@ export const buyCourse = async (token, courses, userDetails, navigate, dispatch)
         console.log("printing order response", orderResponse);
         // options
         const options = {
-            key: process.env.RAZORPAY_KEY,
+            key: process.env.REACT_APP_RAZORPAY_KEY,
             currency: orderResponse.data.data.currency,
             amount: `${orderResponse.data.data.amount}`,
             order_id: orderResponse.data.data.id,
@@ -63,6 +63,8 @@ export const buyCourse = async (token, courses, userDetails, navigate, dispatch)
                 verifyPayment({ ...response, courses }, token, navigate, dispatch);
             }
         }
+
+        console.log('options', options);
 
         const paymentWindow = new window.Razorpay(options);
         paymentWindow.open();

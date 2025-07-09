@@ -11,8 +11,11 @@ const Contact = () => {
                 <div className='w-[40%]'><ContactDetails /></div>
                 <div className='w-[60%]'><ContactUsForm /></div>
             </div>
-            <div className='my-20 flex flex-col justify-between text-white w-11/12 items-center'>
-                <h1>Review from other learners</h1>
+            <div className="relative mx-auto my-20 flex w-11/12 max-w-maxContent flex-col items-center justify-between gap-8 bg-richblack-900 text-white">
+                {/* Reviws from Other Learner */}
+                <h1 className="text-center text-4xl font-semibold mt-8">
+                    Reviews from other learners
+                </h1>
                 <ReviewSlider />
             </div>
             <Footer />

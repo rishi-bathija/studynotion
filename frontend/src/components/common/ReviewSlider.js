@@ -11,6 +11,7 @@ import { ratingEndpoints } from '../../services/api';
 
 const ReviewSlider = () => {
     const [reviews, setReviews] = useState([]);
+    const truncateWords = 15
 
     useEffect(() => {
         const allReviews = async () => {
@@ -42,7 +43,7 @@ const ReviewSlider = () => {
                     {reviews?.map((review, index) => (
                         <SwiperSlide key={index}>
                             {/* Render your review content here */}
-                            <div className='flex flex-col gap-3'>
+                            <div className='flex flex-col gap-3 bg-richblack-800 p-3 text-[14px] text-richblack-25'>
                                 <div className='flex gap-4 items-center'>
                                     <img src={review?.user?.image ? review?.user?.image : `https://api.dicebear.com/5.x/initials/svg?seed=${review?.user?.firstName} ${review?.user?.lastName}`} alt="" className='h-9 w-9 object-cover rounded-full' />
                                     <div className="flex flex-col">
@@ -52,7 +53,14 @@ const ReviewSlider = () => {
                                         </h2>
                                     </div>
                                 </div>
-                                <p>{review?.review}</p>
+                                <p className="font-medium text-richblack-25">
+                                    {review?.review.split(" ").length > truncateWords
+                                        ? `${review?.review
+                                            .split(" ")
+                                            .slice(0, truncateWords)
+                                            .join(" ")} ...`
+                                        : `${review?.review}`}
+                                </p>
                                 <div className='flex items-center gap-2'>
                                     <h3 className="font-semibold text-yellow-100">
                                         {review.rating.toFixed(1)}

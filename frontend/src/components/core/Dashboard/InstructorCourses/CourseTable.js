@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import ConfirmationModal from '../../../common/ConfirmationModal';
 import { deleteCourse, fetchInstructorCourses } from '../../../../services/operations/courseDetailsAPI';
 import { useSelector } from 'react-redux';
+import { formatDate } from '../../../../services/formatDate';
 
 export default function TableExample({ courses, setCourses }) {
     console.log('courses', courses);
@@ -50,7 +51,7 @@ export default function TableExample({ courses, setCourses }) {
                                         <div className='flex flex-col'>
                                             <p>{course?.courseName}</p>
                                             <p>{course?.courseDescription}</p>
-                                            <p>Created</p>
+                                            <p>Created: {formatDate(course.createdAt)}</p>
                                             {course?.status === COURSE_STATUS.DRAFT ? (
                                                 <p className='text-pink-50'>DRAFTED</p>
                                             ) : (
@@ -59,7 +60,7 @@ export default function TableExample({ courses, setCourses }) {
                                         </div>
                                     </Td>
                                     <Td>2hr 30min</Td>
-                                    <Td>${course.price}</Td>
+                                    <Td>₹ {course.price}</Td>
                                     <Td>
                                         <button onClick={() => { console.log('courseId', course._id); navigate(`/dashboard/edit-course/${course._id}`) }} disabled={loading} className='mr-[18px]'>EDIT</button>
                                         <button disabled={loading} onClick={() =>
